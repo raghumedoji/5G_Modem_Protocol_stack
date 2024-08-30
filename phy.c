@@ -1,4 +1,10 @@
 #include <stdio.h>
+#include "rlc.h"
+#include "rrc.h"
+#include "pdcp.h"
+#include "mac.h"
+#include "phy.h"
+#include "nas.h"
 
 // Constants
 #define NUM_SYMBOLS_PER_SLOT 14
