@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <sched.h>
-
+#include <shared_memory.h>
+#include <phy.h>
+#include <mac.h>
+#include <rlc.h>
+#include <pdcp.h>
+#include <rrc.h>
+#include <nas.h>
 
 // Function prototypes for each layer
 void* phy_thread(void* arg);
@@ -117,6 +123,9 @@ void* rrc_thread(void* arg) {
 
 
 int main() {
+
+    init_shared_memory(&shared_memory);
+    
     // Initialize thread attributes
     pthread_attr_init(&attr);
 
