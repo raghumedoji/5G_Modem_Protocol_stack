@@ -3,33 +3,6 @@
 #include <sched.h>
 
 
-typedef struct {
-    int phy_data_ready;
-    char phy_to_mac_buffer[1024];
-    
-    int mac_data_ready;
-    char mac_to_rlc_buffer[1024];
-    
-    int rlc_data_ready;
-    char rlc_to_pdcp_buffer[1024];
-    
-    int pdcp_data_ready;
-    char pdcp_to_rrc_buffer[1024];
-    
-    int rrc_data_ready;
-    char rrc_to_nas_buffer[1024];
-
-    pthread_mutex_t phy_mac_mutex;
-    pthread_mutex_t mac_rlc_mutex;
-    pthread_mutex_t rlc_pdcp_mutex;
-    pthread_mutex_t pdcp_rrc_mutex;
-    pthread_mutex_t rrc_nas_mutex;
-
-} SharedMemory;
-
-void init_shared_memory(SharedMemory* shm);
-
-
 // Function prototypes for each layer
 void* phy_thread(void* arg);
 void* mac_thread(void* arg);
