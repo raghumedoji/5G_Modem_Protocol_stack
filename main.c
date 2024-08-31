@@ -20,7 +20,7 @@ void* nas_thread(void* arg);
 
 SharedMemory shared_memory;
 
-// Thread attributes
+// Thread attributes 
 pthread_attr_t attr;
 
 // Thread identifiers
