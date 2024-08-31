@@ -10,7 +10,7 @@
 #include "nas.h"
 #include "global_variables.h"
 
-// Function prototypes for each layer
+// Function prototypes for each layer 
 void* phy_thread(void* arg);
 void* mac_thread(void* arg);
 void* rlc_thread(void* arg);
