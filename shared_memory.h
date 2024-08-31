@@ -6,7 +6,7 @@
 #define PUSCH_DATA_SIZE 2048
 #define CHANNEL_ESTIMATION_SIZE 512
 
-// Struct for PHY to MAC shared memory
+// Struct for PHY to MAC shared memory 
 typedef struct {
     uint8_t rx_buffer[RX_BUFFER_SIZE];          // Buffer for raw RX data
     uint8_t tx_buffer[TX_BUFFER_SIZE];          // Buffer for TX data
