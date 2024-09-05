@@ -10,7 +10,7 @@
 #include "nas.h"
 #include "global_variables.h"
 
-// Function prototypes for each layer 
+// Functions for each layer 
 void* phy_thread(void* arg);
 void* mac_thread(void* arg);
 void* rlc_thread(void* arg);
@@ -18,15 +18,16 @@ void* pdcp_thread(void* arg);
 void* rrc_thread(void* arg);
 void* nas_thread(void* arg);
 
+//GLobal Shared mem variable
 SharedMemory shared_memory;
 
 // Thread attributes 
 pthread_attr_t attr;
 
-// Thread identifiers
+// Thread IDS
 pthread_t phy_tid, mac_tid, rlc_tid, pdcp_tid, rrc_tid, nas_tid;
 
-// Function implementations for each thread
+// Function call, Core assignments //Assuming 6 Cores one each for(PHY, MAC, RRC, RLC, PDCP, NAS)
 void* phy_thread(void* arg) {
     cpu_set_t cpuset;
     CPU_ZERO(&cpuset);
@@ -62,7 +63,7 @@ void* rlc_thread(void* arg) {
     pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &cpuset);
 
     while (1) {
-        rlc_processing();
+        rlc_layer_processing();
         printf("RLC thread running on core 2\n");
         sleep(1);
     }
@@ -76,7 +77,7 @@ void* pdcp_thread(void* arg) {
     pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &cpuset);
 
     while (1) {
-        pdcp_processing();
+        pdcp_layer_processing();
         printf("PDCP thread running on core 3\n");
         sleep(1);
     }
@@ -90,7 +91,7 @@ void* rrc_thread(void* arg) {
     pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &cpuset);
 
     while (1) {
-        rrc_processing();
+        rrc_layer_processing();
         printf("RRC thread running on core 4\n");
         sleep(1);
     }
@@ -104,7 +105,7 @@ void* nas_thread(void* arg) {
     pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &cpuset);
 
     while (1) {
-        nas_processing();
+        nas_layer_processing();
         printf("NAS thread running on core 5\n");
         sleep(1);
     }
