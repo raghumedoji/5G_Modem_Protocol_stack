@@ -159,16 +159,8 @@ void rrc_idle_mode_procedures() {
 // Main function for testing
 void rrc_layer_processing() {
     rrc_init();
-    rrc_connection_request();
-    
-    RRCMessage setup_msg;
-    strcpy(setup_msg.message, "RRC Connection Setup");
-    rrc_connection_setup(&setup_msg);
-    
-    RRCMessage reconfig_msg;
-    strcpy(reconfig_msg.message, "RRC Reconfiguration");
-    
-    rrc_connection_reconfiguration(&reconfig_msg);
+
+    rrc_connected_mode_procedures();
     
     rrc_measurement_report();
     
